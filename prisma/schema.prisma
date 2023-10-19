@@ -48,7 +48,7 @@ model order {
   userId       BigInt   @db.UnsignedBigInt
   createdAt    DateTime @default(now()) @db.Timestamp(0)
   updatedAt    DateTime @default(now()) @updatedAt @db.Timestamp(0)
-  user         user     @relation(fields: [userId], references: [id])
+  user         user     @relation(fields: [userId], references: [id], onDelete: Restrict, onUpdate: Cascade)
 }
 
 model cart {
@@ -67,7 +67,7 @@ model cart {
   userId     BigInt   @db.UnsignedBigInt
   createdAt  DateTime @default(now()) @db.Timestamp(0)
   updatedAt  DateTime @default(now()) @updatedAt @db.Timestamp(0)
-  user       user     @relation(fields: [userId], references: [id])
+  user       user     @relation(fields: [userId], references: [id], onDelete: Restrict, onUpdate: Cascade)
 }
 
 model product {
@@ -86,7 +86,7 @@ model product {
   updatedAt      DateTime         @default(now()) @updatedAt @db.Timestamp(0)
   product_meta   product_meta[]
   product_review product_review[]
-  user           user             @relation(fields: [userId], references: [id])
+  user           user             @relation(fields: [userId], references: [id], onDelete: Restrict, onUpdate: Cascade)
 }
 
 model product_meta {
@@ -96,7 +96,7 @@ model product_meta {
   productId BigInt   @db.UnsignedBigInt
   createdAt DateTime @default(now()) @db.Timestamp(0)
   updatedAt DateTime @default(now()) @updatedAt @db.Timestamp(0)
-  product   product  @relation(fields: [productId], references: [id])
+  product   product  @relation(fields: [productId], references: [id], onDelete: Restrict, onUpdate: Cascade)
 }
 
 model product_review {
@@ -107,7 +107,7 @@ model product_review {
   productId BigInt   @db.UnsignedBigInt
   createdAt DateTime @default(now()) @db.Timestamp(0)
   updatedAt DateTime @default(now()) @updatedAt @db.Timestamp(0)
-  product   product  @relation(fields: [productId], references: [id])
+  product   product  @relation(fields: [productId], references: [id], onDelete: Restrict, onUpdate: Cascade)
 }
 
 model category {
